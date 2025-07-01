@@ -1,34 +1,24 @@
-package edu.uph.m2si1.talkiebuddy.ui;
+package edu.uph.m2si1.talkiebuddy;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import edu.uph.m2si1.talkiebuddy.R;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class DashboardActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard); // layout XML yg ada BottomNavigationView-nya
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-
-        // Set 3 fragment sebagai top-level destination
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_tips)
-                .build();
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_dashboard);
-
-        NavigationUI.setupWithNavController(navView, navController);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_dashboard);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
     }
 }

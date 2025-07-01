@@ -1,14 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home" />
-    <item
-        android:id="@+id/navigation_tips"
+
+    <item android:title="Tips"
         android:icon="@drawable/ic_tips"
-        android:title="Tips" />
-    <item
-        android:id="@+id/navigation_profil"
+        android:id="@+id/navTips"/>
+    <item android:title="Home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/navHome"/>
+    <item android:title="Profil"
         android:icon="@drawable/ic_profile"
-        android:title="Profil" />
+        android:id="@+id/navProfil"/>
 </menu>
