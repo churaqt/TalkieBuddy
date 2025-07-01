@@ -19,17 +19,16 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.navHome:
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.navProfil:
-                    replaceFragment(new ProfilFragment());
-                    break;
-                case R.id.navTips:
-                    replaceFragment(new TipsFragment());
-                    break;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navHome) {
+                replaceFragment(new HomeFragment());
+            } else if (itemId == R.id.navProfil) {
+                replaceFragment(new ProfilFragment());
+            } else if (itemId == R.id.navTips) {
+                replaceFragment(new TipsFragment());
             }
+
             return true;
         });
     }
