@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    implementation("io.realm:realm-android-library:10.15.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
