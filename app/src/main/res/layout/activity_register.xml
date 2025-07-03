@@ -141,7 +141,7 @@
                     android:text="Have an Account?" />
 
                 <TextView
-                    android:id="@+id/txtLogin"
+                    android:id="@+id/txvLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

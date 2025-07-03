@@ -1,5 +1,6 @@
 package edu.uph.m2si1.talkiebuddy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText edtUsername, edtEmail, edtPassword;
     private Button btnRegister;
-    private TextView txtLogin;
+    private TextView txvLogin;
     private Realm realm;
 
     @Override
@@ -39,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnRegister = findViewById(R.id.btnRegister);
-        txtLogin = findViewById(R.id.txtLogin);
+        txvLogin = findViewById(R.id.txvLogin);
 
         btnRegister.setOnClickListener(v -> {
             String username = edtUsername.getText().toString().trim();
@@ -66,15 +67,22 @@ public class RegisterActivity extends AppCompatActivity {
                 newAcc.setPassword(password);
             }, () -> {
                 runOnUiThread(() -> {
-                    Toast.makeText(this, "Registrasi berhasil. Silakan login.", Toast.LENGTH_SHORT).show();
-                    finish();
+                    Toast.makeText(this, "Akun berhasil dibuat. Mengalihkan ke halaman login...", Toast.LENGTH_SHORT).show();
+                    goToLogin();
                 });
             }, error -> {
                 runOnUiThread(() -> Toast.makeText(this, "Gagal registrasi: " + error.getMessage(), Toast.LENGTH_SHORT).show());
             });
         });
 
-        txtLogin.setOnClickListener(v -> finish());
+        txvLogin.setOnClickListener(v -> goToLogin());
+    }
+
+    private void goToLogin() {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     @Override

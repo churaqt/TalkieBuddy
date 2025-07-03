@@ -117,7 +117,7 @@
                     android:text="Don't Have an Account?" />
 
                 <TextView
-                    android:id="@+id/txtRegister"
+                    android:id="@+id/txvRegister"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

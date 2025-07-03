@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText edtUsername, edtPassword;
     private Button btnLogin;
+    private TextView txvRegister;
     private Realm realm;
 
     @Override
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        txvRegister = findViewById(R.id.txvRegister); // ini TextView link ke register
 
         btnLogin.setOnClickListener(v -> {
             String username = edtUsername.getText().toString().trim();
@@ -61,6 +64,15 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Username atau password salah", Toast.LENGTH_SHORT).show();
             }
         });
+
+        txvRegister.setOnClickListener(v -> goToRegister());
+    }
+
+    private void goToRegister() {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     @Override
