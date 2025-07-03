@@ -9,13 +9,13 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Realm.init(this);  // Initialize Realm
 
+        Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
-                .name("default.realm")
+                .name("talkiebuddy.realm") // nama file bisa custom
                 .schemaVersion(1)
-                .allowWritesOnUiThread(true)  // Untuk demo, jangan dipakai di produksi
                 .deleteRealmIfMigrationNeeded()
+                .allowWritesOnUiThread(true) // opsional, untuk demo
                 .build();
 
         Realm.setDefaultConfiguration(config);

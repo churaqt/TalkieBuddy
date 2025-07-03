@@ -3,13 +3,13 @@ package edu.uph.m2si1.talkiebuddy.model;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class User extends RealmObject {
+public class Account extends RealmObject {
     @PrimaryKey
     private String username;  // username unik, jadikan primary key
     private String email;
     private String password;
 
-    public User() {}
+    public Account() {}
 
     // Getter & Setter
     public String getUsername() {

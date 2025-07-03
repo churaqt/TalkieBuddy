@@ -12,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import edu.uph.m2si1.talkiebuddy.model.User;
+import edu.uph.m2si1.talkiebuddy.model.Account;
 import io.realm.Realm;
 
 public class LoginActivity extends AppCompatActivity {
@@ -27,22 +27,18 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        // Untuk padding sistem UI
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Inisialisasi Realm
         realm = Realm.getDefaultInstance();
-
 
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
 
-        // Tombol Login
         btnLogin.setOnClickListener(v -> {
             String username = edtUsername.getText().toString().trim();
             String password = edtPassword.getText().toString().trim();
@@ -52,18 +48,14 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Cek di database Realm
-            User user = realm.where(User.class)
+            Account user = realm.where(Account.class)
                     .equalTo("username", username)
                     .equalTo("password", password)
                     .findFirst();
 
             if (user != null) {
                 Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show();
-
-
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Username atau password salah", Toast.LENGTH_SHORT).show();
