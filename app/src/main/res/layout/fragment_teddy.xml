@@ -87,7 +87,8 @@
                             android:id="@+id/txvName"
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
-                            android:text="Name" />
+                            android:text="Name"
+                            android:textStyle="bold"/>
 
                         <EditText
                             android:id="@+id/edtName"
@@ -95,7 +96,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="example: Fluffy"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:textSize="15dp"/>
                     </LinearLayout>
 
                     <!-- Birthday -->
@@ -109,7 +111,8 @@
                             android:id="@+id/txvBirthday"
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
-                            android:text="Birthday" />
+                            android:text="Birthday"
+                            android:textStyle="bold"/>
 
                         <EditText
                             android:id="@+id/edtBirthday"
@@ -117,10 +120,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="e.g. 2024-07-05"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:textSize="15dp"/>
                     </LinearLayout>
 
-                    <!-- Personality -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -130,7 +133,8 @@
                             android:id="@+id/txvPersonality"
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
-                            android:text="Personality" />
+                            android:text="Personality"
+                            android:textStyle="bold"/>
 
                         <EditText
                             android:id="@+id/edtPersonality"
@@ -138,7 +142,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="e.g. Brave"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:textSize="15dp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -147,7 +152,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/txvVoiceSpeed"
@@ -282,16 +288,6 @@
             android:text="4 Times" />
     </RadioGroup>
 </LinearLayout>
-
-        <!-- Voice Speed -->
-
-        <!-- Emotion Tone -->
-
-        <!-- Word Level -->
-
-        <!-- Trigger Sounds -->
-
-        <!-- Repeat Words -->
 
     </LinearLayout>
     </LinearLayout>
