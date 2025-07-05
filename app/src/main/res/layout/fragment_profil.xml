@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="142dp"
             android:orientation="horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -83,8 +83,8 @@
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="16dp">
 
             <LinearLayout
@@ -247,7 +247,7 @@
             android:text="Transcription"
             android:textSize="17dp"
             android:textStyle="bold"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
     </LinearLayout>
 </ScrollView>
