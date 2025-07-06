@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Fragment default saat pertama dibuka
-        replaceFragment(new HomeFragment());
+        //replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();

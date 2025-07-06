@@ -8,6 +8,9 @@
         android:id="@+id/navHome"
         android:icon="@drawable/ic_home_black_24dp" />
     <item
+        android:id="@+id/navTeddy"
+        android:icon="@drawable/appicon" />
+    <item
         android:id="@+id/navProfil"
         android:icon="@drawable/ic_profile" />
 

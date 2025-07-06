@@ -16,11 +16,18 @@
         android:name="edu.uph.m2si1.talkiebuddy.ProfilFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profil"/>
+    <fragment
+        android:id="@+id/navTeddy"
+        android:name="edu.uph.m2si1.talkiebuddy.TeddyFragment"
+        android:label="Teddy"
+        tools:layout="@layout/fragment_teddy"/>
 
     <fragment
         android:id="@+id/navTips"
         android:name="edu.uph.m2si1.talkiebuddy.TipsFragment"
         android:label="Tips"
         tools:layout="@layout/fragment_tips"/>
+
+
 
 </navigation>
