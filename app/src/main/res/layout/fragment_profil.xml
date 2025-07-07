@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="142dp"
             android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -244,10 +244,30 @@
             android:id="@+id/textView18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Transcription"
+            android:text="Progress"
             android:textSize="17dp"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp" />
+        <Button
+            android:id="@+id/btnAddProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ Add Progress"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="#5E3C0A" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:nestedScrollingEnabled="false" />
     </LinearLayout>
 </ScrollView>

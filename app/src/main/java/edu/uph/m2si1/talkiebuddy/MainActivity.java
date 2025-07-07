@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.navTips) {
                 replaceFragment(new TipsFragment());
             }
+            else if (itemId == R.id.navTeddy) {
+                replaceFragment(new TeddyFragment());
+            }
 
             return true;
         });

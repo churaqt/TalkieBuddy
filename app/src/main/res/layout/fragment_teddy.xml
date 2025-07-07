@@ -197,7 +197,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:outlineAmbientShadowColor=""
+
                         android:paddingHorizontal="8dp" />
 
                     <ImageView
@@ -239,21 +239,21 @@
                         android:id="@+id/radioEasy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="50dp"
+                        android:paddingRight="20dp"
                         android:text="Easy" />
 
                     <RadioButton
                         android:id="@+id/radioMedium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="50dp"
+                        android:paddingRight="20dp"
                         android:text="Medium" />
 
                     <RadioButton
                         android:id="@+id/radioHard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="50dp"
+                        android:paddingRight="20dp"
                         android:text="Hard" />
                 </RadioGroup>
 
@@ -291,14 +291,14 @@
                         android:id="@+id/radio2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="30dp"
+                        android:paddingRight="20dp"
                         android:text="2 Times" />
 
                     <RadioButton
                         android:id="@+id/radio3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="50dp"
+                        android:paddingRight="20dp"
                         android:text="3 Times" />
 
                     <RadioButton
