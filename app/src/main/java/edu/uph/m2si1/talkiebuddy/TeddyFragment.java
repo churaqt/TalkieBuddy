@@ -1,5 +1,7 @@
 package edu.uph.m2si1.talkiebuddy;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,58 +9,122 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TeddyFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TeddyFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText edtName, edtBirthday, edtPersonality, edtTriggerSound;
+    private SeekBar seekBarVoiceSpeed;
+    private Spinner spinnerEmotion;
+    private RadioGroup radioGroupWordLevel, radioGroupRepeat;
+    private RadioButton radioEasy, radioMedium, radioHard, radio2, radio3, radio4;
+    private Button btnSave;
 
     public TeddyFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TeddyFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static TeddyFragment newInstance(String param1, String param2) {
         TeddyFragment fragment = new TeddyFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString("param1", param1);
+        args.putString("param2", param2);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teddy, container, false);
+        View view = inflater.inflate(R.layout.fragment_teddy, container, false);
+
+        // Binding UI components
+        edtName = view.findViewById(R.id.edtName);
+        edtBirthday = view.findViewById(R.id.edtBirthday);
+        edtPersonality = view.findViewById(R.id.edtPersonality);
+        edtTriggerSound = view.findViewById(R.id.edtTriggerSound);
+        seekBarVoiceSpeed = view.findViewById(R.id.seekBarVoiceSpeed);
+        spinnerEmotion = view.findViewById(R.id.spinnerEmotion);
+        radioGroupWordLevel = view.findViewById(R.id.radioGroupWordLevel);
+        radioGroupRepeat = view.findViewById(R.id.radioGroupRepeat);
+        radioEasy = view.findViewById(R.id.radioEasy);
+        radioMedium = view.findViewById(R.id.radioMedium);
+        radioHard = view.findViewById(R.id.radioHard);
+        radio2 = view.findViewById(R.id.radio2);
+        radio3 = view.findViewById(R.id.radio3);
+        radio4 = view.findViewById(R.id.radio4);
+        btnSave = view.findViewById(R.id.btnSave);
+
+        // Load saved data
+        loadSavedData();
+
+        // Save button click
+        btnSave.setOnClickListener(v -> saveData());
+
+        return view;
+    }
+
+    private void saveData() {
+        SharedPreferences sharedPref = requireActivity().getSharedPreferences("BearPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("name", edtName.getText().toString());
+        editor.putString("birthday", edtBirthday.getText().toString());
+        editor.putString("personality", edtPersonality.getText().toString());
+        editor.putInt("voiceSpeed", seekBarVoiceSpeed.getProgress());
+        editor.putString("emotion", spinnerEmotion.getSelectedItem().toString());
+        editor.putString("triggerSound", edtTriggerSound.getText().toString());
+
+        int wordLevelId = radioGroupWordLevel.getCheckedRadioButtonId();
+        if (wordLevelId == R.id.radioEasy) editor.putString("wordLevel", "Easy");
+        else if (wordLevelId == R.id.radioMedium) editor.putString("wordLevel", "Medium");
+        else if (wordLevelId == R.id.radioHard) editor.putString("wordLevel", "Hard");
+
+        int repeatId = radioGroupRepeat.getCheckedRadioButtonId();
+        if (repeatId == R.id.radio2) editor.putInt("repeat", 2);
+        else if (repeatId == R.id.radio3) editor.putInt("repeat", 3);
+        else if (repeatId == R.id.radio4) editor.putInt("repeat", 4);
+
+        editor.apply();
+        Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadSavedData() {
+        SharedPreferences sharedPref = requireActivity().getSharedPreferences("BearPrefs", Context.MODE_PRIVATE);
+
+        edtName.setText(sharedPref.getString("name", ""));
+        edtBirthday.setText(sharedPref.getString("birthday", ""));
+        edtPersonality.setText(sharedPref.getString("personality", ""));
+        edtTriggerSound.setText(sharedPref.getString("triggerSound", ""));
+        seekBarVoiceSpeed.setProgress(sharedPref.getInt("voiceSpeed", 0));
+
+        // Spinner Emotion
+        String emotion = sharedPref.getString("emotion", "");
+        for (int i = 0; i < spinnerEmotion.getCount(); i++) {
+            if (spinnerEmotion.getItemAtPosition(i).toString().equals(emotion)) {
+                spinnerEmotion.setSelection(i);
+                break;
+            }
+        }
+
+        // Word Level Radio
+        String wordLevel = sharedPref.getString("wordLevel", "");
+        if (wordLevel.equals("Easy")) radioEasy.setChecked(true);
+        else if (wordLevel.equals("Medium")) radioMedium.setChecked(true);
+        else if (wordLevel.equals("Hard")) radioHard.setChecked(true);
+
+        // Repeat Radio
+        int repeat = sharedPref.getInt("repeat", 0);
+        if (repeat == 2) radio2.setChecked(true);
+        else if (repeat == 3) radio3.setChecked(true);
+        else if (repeat == 4) radio4.setChecked(true);
     }
 }
