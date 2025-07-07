@@ -130,10 +130,10 @@
 
                     <TextView
                         android:id="@+id/textView21"
-                        android:layout_width="88dp"
+                        android:layout_width="68dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginLeft="85dp"
+                        android:layout_marginLeft="75dp"
                         android:text="268 words"
                         android:textColor="#40ad4b" />
                 </LinearLayout>
@@ -158,7 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginLeft="23dp"
+                        android:layout_marginLeft="13dp"
                         android:text="Wednesday (Avg. 30mins)"
                         android:textColor="#40ad4b" />
                 </LinearLayout>
@@ -180,10 +180,9 @@
 
                     <TextView
                         android:id="@+id/textView13"
-                        android:layout_width="109dp"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginLeft="2dp"
                         android:text="Emotion, Family, Objects, Animals"
                         android:textColor="#40ad4b" />
                 </LinearLayout>
@@ -208,7 +207,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="10dp"
                         android:text="18+ words than last week"
                         android:textColor="#40ad4b" />
                 </LinearLayout>
@@ -233,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginLeft="65dp"
+                        android:layout_marginLeft="55dp"
                         android:text="86% Completed"
                         android:textColor="#40ad4b" />
                 </LinearLayout>
