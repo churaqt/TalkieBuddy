@@ -117,8 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Log Out"
-            android:backgroundTint="#FF4444"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#FF4444"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"/>
     </LinearLayout>

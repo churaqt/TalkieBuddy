@@ -28,7 +28,7 @@ public class ActivitySettings extends AppCompatActivity {
 
         btnLogout.setOnClickListener(view -> {
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
-            finish(); // Kembali ke MainActivity
+            finish();
         });
     }
 }
