@@ -15,6 +15,16 @@ import io.realm.Realm;
 
 public class AddNoteDialog extends DialogFragment {
 
+    public interface NoteSavedListener {
+        void onNoteSaved();
+    }
+
+    private NoteSavedListener listener;
+
+    public void setNoteSavedListener(NoteSavedListener listener) {
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -51,8 +61,8 @@ public class AddNoteDialog extends DialogFragment {
             realm.close();
             dialog.dismiss();
 
-            if (getActivity() != null) {
-                getActivity().recreate(); // untuk refresh otomatis RecyclerView
+            if (listener != null) {
+                listener.onNoteSaved();
             }
         });
 

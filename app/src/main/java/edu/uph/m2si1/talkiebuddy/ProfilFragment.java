@@ -65,8 +65,11 @@ public class ProfilFragment extends Fragment {
         loadNotes(); // load from Realm
 
         btnAddProgress.setOnClickListener(v -> {
-            new AddNoteDialog().show(getParentFragmentManager(), "AddNoteDialog");
+            AddNoteDialog dialog = new AddNoteDialog();
+            dialog.setNoteSavedListener(this::loadNotes); // callback ke loadNotes()
+            dialog.show(getParentFragmentManager(), "AddNoteDialog");
         });
+
     }
 
     private void loadNotes() {
