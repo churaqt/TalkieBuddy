@@ -15,4 +15,22 @@
     <color name="text_primary">#333333</color>
     <color name="text_secondary">#666666</color>
     <color name="gold_color">#D4AF37</color>
+
+    <!-- Settings panel colors -->
+    <color name="settings_background">#F8F6F0</color>
+    <color name="settings_header_background">#F8F6F0</color>
+    <color name="settings_text_primary">#2C2C2C</color>
+    <color name="settings_text_secondary">#888888</color>
+    <color name="settings_icon_color">#666666</color>
+
+    <!-- Switch colors -->
+    <color name="switch_track_checked">#E6956B</color>
+    <color name="switch_track_unchecked">#CCCCCC</color>
+    <color name="switch_thumb_checked">#FFFFFF</color>
+    <color name="switch_thumb_unchecked">#FFFFFF</color>
+
+    <!-- Logout button colors -->
+    <color name="logout_text_color">#FFFFFF</color>
+    <color name="logout_button_background">#FFFFFF</color>
+    <color name="logout_button_border">#FFFFFF</color>
 </resources>
