@@ -9,6 +9,8 @@ import android.widget.DatePicker;
 import android.view.View;
 import android.widget.Toast;
 
+import edu.uph.m2si1.talkiebuddy.R;
+
 public class ProfilDetailActivity extends AppCompatActivity {
 
     private ImageView profileImage;
@@ -21,7 +23,7 @@ public class ProfilDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_detail);
+        setContentView(R.layout.activity_profil_detail);
 
         initializeViews();
         setupClickListeners();
