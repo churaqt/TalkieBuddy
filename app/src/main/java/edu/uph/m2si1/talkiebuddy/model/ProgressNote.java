@@ -6,7 +6,6 @@ import io.realm.annotations.PrimaryKey;
 public class ProgressNote extends RealmObject {
     @PrimaryKey
     private int id;
-
     private String date;
     private String topic;
     private String words;
@@ -16,70 +15,27 @@ public class ProgressNote extends RealmObject {
     private String notes;
 
 
-    public ProgressNote() {}
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    // --- Getter & Setter ---
-    public int getId() {
-        return id;
-    }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getTopic() { return topic; }
+    public void setTopic(String topic) { this.topic = topic; }
 
-    public String getDate() {
-        return date;
-    }
+    public String getWords() { return words; }
+    public void setWords(String words) { this.words = words; }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    public String getSummary() { return summary; }
+    public void setSummary(String summary) { this.summary = summary; }
 
-    public String getTopic() {
-        return topic;
-    }
+    public int getConfidence() { return confidence; }
+    public void setConfidence(int confidence) { this.confidence = confidence; }
 
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
+    public String getDuration() { return duration; }
+    public void setDuration(String duration) { this.duration = duration; }
 
-    public String getWords() {
-        return words;
-    }
-
-    public void setWords(String words) {
-        this.words = words;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public int getConfidence() {
-        return confidence;
-    }
-
-    public void setConfidence(int confidence) {
-        this.confidence = confidence;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
+    public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes; }
 }

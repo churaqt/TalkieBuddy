@@ -40,7 +40,7 @@ public class ProfilFragment extends Fragment {
     private String mParam2;
 
     public ProfilFragment() {
-        // Required empty public constructor
+
     }
 
     public static ProfilFragment newInstance(String param1, String param2) {
@@ -102,7 +102,15 @@ public class ProfilFragment extends Fragment {
         RealmResults<ProgressNote> results = realm.where(ProgressNote.class).findAll();
         noteList.clear();
         noteList.addAll(results);
-        adapter = new ProgressNoteAdapter(noteList);
+
+        adapter = new ProgressNoteAdapter(requireContext(), noteList, new ProgressNoteAdapter.OnItemActionListener() {
+            @Override
+            public void onEdit(ProgressNote note) {
+                EditNoteDialog dialog = new EditNoteDialog(note, ProfilFragment.this::loadNotes);
+                dialog.show(getParentFragmentManager(), "EditNoteDialog");
+            }
+        });
+
         rvProgress.setAdapter(adapter);
     }
 

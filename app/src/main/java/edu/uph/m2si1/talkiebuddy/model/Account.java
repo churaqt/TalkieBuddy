@@ -5,7 +5,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class Account extends RealmObject {
     @PrimaryKey
-    private String username;  // username unik, jadikan primary key
+    private String username;
     private String email;
     private String password;
 
