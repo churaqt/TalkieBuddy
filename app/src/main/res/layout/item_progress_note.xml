@@ -20,13 +20,13 @@
 
     <TextView
         android:id="@+id/txvTopic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
         android:text="Topic: Animals"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/txvDate"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintTop_toBottomOf="@id/txvDate" />
 
     <TextView
         android:id="@+id/txvWords"
