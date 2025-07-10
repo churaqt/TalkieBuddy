@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.content.Intent;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -79,6 +81,14 @@ public class ProfilFragment extends Fragment {
         btnAddProgress = view.findViewById(R.id.btnAddProgress);
         drawerLayout = view.findViewById(R.id.drawer_layout);
         imgSetting = view.findViewById(R.id.imgSetting);
+
+        // NEW: find profile_setting
+        LinearLayout profileSetting = view.findViewById(R.id.profile_setting);
+        profileSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), ProfilDetailActivity.class);
+            startActivity(intent);
+        });
+
 
         rvProgress.setLayoutManager(new LinearLayoutManager(requireContext()));
         loadNotes();

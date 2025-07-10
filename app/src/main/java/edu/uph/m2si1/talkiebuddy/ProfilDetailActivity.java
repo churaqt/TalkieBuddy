@@ -1,3 +1,5 @@
+package edu.uph.m2si1.talkiebuddy;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
