@@ -5,9 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.content.Intent;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,15 +33,23 @@ public class ProfilFragment extends Fragment {
     private List<ProgressNote> noteList = new ArrayList<>();
     private Realm realm;
 
+    private DrawerLayout drawerLayout;
+    private ImageView imgSetting;
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    private String mParam1;
+    private String mParam2;
+
     public ProfilFragment() {
-        // Required empty public constructor
+
     }
 
     public static ProfilFragment newInstance(String param1, String param2) {
         ProfilFragment fragment = new ProfilFragment();
         Bundle args = new Bundle();
-        args.putString("ARG_PARAM1", param1);
-        args.putString("ARG_PARAM2", param2);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -44,8 +57,13 @@ public class ProfilFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Realm.init(requireContext()); // init Realm
+        Realm.init(requireContext());
         realm = Realm.getDefaultInstance();
+
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
@@ -58,25 +76,51 @@ public class ProfilFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Inisialisasi View
         rvProgress = view.findViewById(R.id.rvProgress);
         btnAddProgress = view.findViewById(R.id.btnAddProgress);
+        drawerLayout = view.findViewById(R.id.drawer_layout);
+        imgSetting = view.findViewById(R.id.imgSetting);
+
+        // NEW: find profile_setting
+        LinearLayout profileSetting = view.findViewById(R.id.profile_setting);
+        profileSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), ProfilDetailActivity.class);
+            startActivity(intent);
+        });
+
 
         rvProgress.setLayoutManager(new LinearLayoutManager(requireContext()));
-        loadNotes(); // load from Realm
+        loadNotes();
 
         btnAddProgress.setOnClickListener(v -> {
             AddNoteDialog dialog = new AddNoteDialog();
-            dialog.setNoteSavedListener(this::loadNotes); // callback ke loadNotes()
+            dialog.setNoteSavedListener(this::loadNotes);
             dialog.show(getParentFragmentManager(), "AddNoteDialog");
         });
 
+        imgSetting.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                drawerLayout.closeDrawer(GravityCompat.END);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.END);
+            }
+        });
     }
 
     private void loadNotes() {
         RealmResults<ProgressNote> results = realm.where(ProgressNote.class).findAll();
         noteList.clear();
         noteList.addAll(results);
-        adapter = new ProgressNoteAdapter(noteList);
+
+        adapter = new ProgressNoteAdapter(requireContext(), noteList, new ProgressNoteAdapter.OnItemActionListener() {
+            @Override
+            public void onEdit(ProgressNote note) {
+                EditNoteDialog dialog = new EditNoteDialog(note, ProfilFragment.this::loadNotes);
+                dialog.show(getParentFragmentManager(), "EditNoteDialog");
+            }
+        });
+
         rvProgress.setAdapter(adapter);
     }
 
