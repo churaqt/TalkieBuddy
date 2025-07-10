@@ -27,7 +27,7 @@ public class TeddyFragment extends Fragment {
     private Button btnSave;
 
     public TeddyFragment() {
-        // Required empty public constructor
+        // Required empty public constructor.
     }
 
     public static TeddyFragment newInstance() {
