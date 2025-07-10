@@ -13,7 +13,7 @@ import edu.uph.m2si1.talkiebuddy.R;
 
 public class ProfilDetailActivity extends AppCompatActivity {
 
-    private ImageView profileImage;
+    private ImageView profileImage, backButton;
     private TextView profileName;
     private RadioGroup genderGroup;
     private RadioButton maleRadio, femaleRadio;
@@ -38,6 +38,7 @@ public class ProfilDetailActivity extends AppCompatActivity {
         femaleRadio = findViewById(R.id.female_radio);
         birthdayPicker = findViewById(R.id.birthday_picker);
         updateButton = findViewById(R.id.update_button);
+        backButton = findViewById(R.id.back_button); // <-- add this line
     }
 
     private void setupClickListeners() {
@@ -45,6 +46,13 @@ public class ProfilDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveProfileData();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Go back to the previous activity or fragment
             }
         });
     }
