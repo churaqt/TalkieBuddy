@@ -139,10 +139,10 @@
 
                         <TextView
                             android:id="@+id/textView21"
-                            android:layout_width="wrap_content"
+                            android:layout_width="89dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="65dp"
+                            android:layout_marginLeft="35dp"
                             android:text="268 words"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -164,9 +164,10 @@
 
                         <TextView
                             android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
+                            android:layout_width="121dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
+                            android:layout_marginLeft="30dp"
                             android:text="Wednesday (Avg. 30mins)"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -188,10 +189,10 @@
 
                         <TextView
                             android:id="@+id/textView13"
-                            android:layout_width="108dp"
+                            android:layout_width="114dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="30dp"
+                            android:layout_marginLeft="5dp"
                             android:text="Emotion, Family, Objects, Animals"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -216,7 +217,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="3dp"
+                            android:layout_marginLeft="5dp"
                             android:text="18+ words than last week"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -238,10 +239,10 @@
 
                         <TextView
                             android:id="@+id/textView17"
-                            android:layout_width="wrap_content"
+                            android:layout_width="120dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="49dp"
+                            android:layout_marginLeft="19dp"
                             android:text="86% Completed"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
