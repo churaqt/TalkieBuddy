@@ -1,9 +1,11 @@
 package edu.uph.m2si1.talkiebuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,7 +18,7 @@ import edu.uph.m2si1.talkiebuddy.R;
 public class ProfilDetailActivity extends AppCompatActivity {
 
     private ImageView profileImage, backButton;
-    private TextView profileName;
+    private EditText profileName; // Changed from TextView to EditText
     private RadioGroup genderGroup;
     private RadioButton maleRadio, femaleRadio;
     private DatePicker birthdayPicker;
@@ -40,7 +42,7 @@ public class ProfilDetailActivity extends AppCompatActivity {
         femaleRadio = findViewById(R.id.female_radio);
         birthdayPicker = findViewById(R.id.birthday_picker);
         updateButton = findViewById(R.id.update_button);
-        backButton = findViewById(R.id.back_button); // <-- add this line
+        backButton = findViewById(R.id.back_button);
     }
 
     private void setupClickListeners() {
@@ -57,23 +59,76 @@ public class ProfilDetailActivity extends AppCompatActivity {
                 finish(); // Go back to the previous activity or fragment
             }
         });
+
+        // Add click listeners to make radio buttons actually selectable
+        maleRadio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                maleRadio.setChecked(true);
+                femaleRadio.setChecked(false);
+            }
+        });
+
+        femaleRadio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                femaleRadio.setChecked(true);
+                maleRadio.setChecked(false);
+            }
+        });
     }
 
     private void loadProfileData() {
-        // Load existing profile data
-        profileName.setText("John");
-        maleRadio.setChecked(true);
-        // Set default date or load from preferences
+        // Load existing profile data from SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
+        String name = prefs.getString("name", "John");
+        String gender = prefs.getString("gender", "Male");
+
+        profileName.setText(name);
+
+        if (gender.equals("Male")) {
+            maleRadio.setChecked(true);
+            femaleRadio.setChecked(false);
+        } else {
+            femaleRadio.setChecked(true);
+            maleRadio.setChecked(false);
+        }
+
+        // Load birthday from preferences
+        int year = prefs.getInt("birth_year", 2000);
+        int month = prefs.getInt("birth_month", 0);
+        int day = prefs.getInt("birth_day", 1);
+        birthdayPicker.updateDate(year, month, day);
     }
 
     private void saveProfileData() {
+        // Get the name from EditText
+        String name = profileName.getText().toString().trim();
+
+        // Validate name input
+        if (TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "Please enter your name!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Get selected gender
         String selectedGender = maleRadio.isChecked() ? "Male" : "Female";
+
+        // Get birthday
         int year = birthdayPicker.getYear();
         int month = birthdayPicker.getMonth();
         int day = birthdayPicker.getDayOfMonth();
 
-        // Save to SharedPreferences or database
-        // For now, show a toast
+        // Save to SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("name", name);
+        editor.putString("gender", selectedGender);
+        editor.putInt("birth_year", year);
+        editor.putInt("birth_month", month);
+        editor.putInt("birth_day", day);
+        editor.apply();
+
         Toast.makeText(this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
     }
 }
