@@ -165,9 +165,10 @@
                         <TextView
                             android:id="@+id/textView11"
                             android:layout_width="121dp"
+                            android:textAlignment="viewEnd"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="30dp"
+                            android:layout_marginLeft="15dp"
                             android:text="Wednesday (Avg. 30mins)"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -190,9 +191,10 @@
                         <TextView
                             android:id="@+id/textView13"
                             android:layout_width="114dp"
+                            android:textAlignment="viewEnd"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="-5dp"
                             android:text="Emotion, Family, Objects, Animals"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -214,11 +216,12 @@
 
                         <TextView
                             android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
+                            android:layout_width="141dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="-10dp"
                             android:text="18+ words than last week"
+                            android:textAlignment="viewEnd"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
 
