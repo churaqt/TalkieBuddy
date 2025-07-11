@@ -92,7 +92,6 @@ public class ProfilDetailActivity extends AppCompatActivity {
         int day = prefs.getInt("birth_day", 1);
         birthdayPicker.updateDate(year, month, day);
     }
-
     private void saveProfileData() {
         // Get the name from EditText
         String name = profileName.getText().toString().trim();
