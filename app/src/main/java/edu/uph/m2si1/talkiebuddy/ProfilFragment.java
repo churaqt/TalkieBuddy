@@ -153,6 +153,15 @@ public class ProfilFragment extends Fragment {
         if (ageTextView != null) {
             ageTextView.setText(age + " y/o");
         }
+
+        TextView descTextView = getView().findViewById(R.id.textView8);
+        if (descTextView != null) {
+            String description = name + " is currently in the early speaking stage. " +
+                    "Daily interaction with TalkieBuddy will help " + name +
+                    " build confidence, expand their vocabulary, and develop clearer pronunciation.";
+            descTextView.setText(description);
+        }
+
     }
 
     @Override
