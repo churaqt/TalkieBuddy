@@ -18,7 +18,7 @@ import edu.uph.m2si1.talkiebuddy.R;
 public class ProfilDetailActivity extends AppCompatActivity {
 
     private ImageView profileImage, backButton;
-    private EditText profileName; // Changed from TextView to EditText
+    private EditText profileName;
     private RadioGroup genderGroup;
     private RadioButton maleRadio, femaleRadio;
     private DatePicker birthdayPicker;
@@ -56,24 +56,17 @@ public class ProfilDetailActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Go back to the previous activity or fragment
+                finish();
             }
         });
 
-        // Add click listeners to make radio buttons actually selectable
-        maleRadio.setOnClickListener(new View.OnClickListener() {
+        // Use RadioGroup's built-in listener instead of individual click listeners
+        genderGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                maleRadio.setChecked(true);
-                femaleRadio.setChecked(false);
-            }
-        });
-
-        femaleRadio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                femaleRadio.setChecked(true);
-                maleRadio.setChecked(false);
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Force refresh the drawable state to ensure proper visual feedback
+                maleRadio.refreshDrawableState();
+                femaleRadio.refreshDrawableState();
             }
         });
     }
@@ -86,12 +79,11 @@ public class ProfilDetailActivity extends AppCompatActivity {
 
         profileName.setText(name);
 
+        // Use RadioGroup's check method for proper state management
         if (gender.equals("Male")) {
-            maleRadio.setChecked(true);
-            femaleRadio.setChecked(false);
+            genderGroup.check(R.id.male_radio);
         } else {
-            femaleRadio.setChecked(true);
-            maleRadio.setChecked(false);
+            genderGroup.check(R.id.female_radio);
         }
 
         // Load birthday from preferences
@@ -111,8 +103,14 @@ public class ProfilDetailActivity extends AppCompatActivity {
             return;
         }
 
-        // Get selected gender
-        String selectedGender = maleRadio.isChecked() ? "Male" : "Female";
+        // Get selected gender using RadioGroup
+        String selectedGender = "Male"; // default
+        int selectedId = genderGroup.getCheckedRadioButtonId();
+        if (selectedId == R.id.male_radio) {
+            selectedGender = "Male";
+        } else if (selectedId == R.id.female_radio) {
+            selectedGender = "Female";
+        }
 
         // Get birthday
         int year = birthdayPicker.getYear();
