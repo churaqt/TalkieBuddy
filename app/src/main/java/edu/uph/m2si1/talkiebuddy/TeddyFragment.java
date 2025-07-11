@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -58,6 +59,15 @@ public class TeddyFragment extends Fragment {
         radio4 = view.findViewById(R.id.radio4);
 
         btnSave = view.findViewById(R.id.btnSave);
+
+        // Spinner Adapter
+        ArrayAdapter<CharSequence> emotionAdapter = ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.emotion_array,
+                android.R.layout.simple_spinner_item
+        );
+        emotionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEmotion.setAdapter(emotionAdapter);
 
         // Load data
         loadSavedData();
@@ -115,7 +125,7 @@ public class TeddyFragment extends Fragment {
         edtTriggerSound.setText(sharedPref.getString("triggerSound", ""));
         seekBarVoiceSpeed.setProgress(sharedPref.getInt("voiceSpeed", 0));
 
-        // Emotion Spinner
+        // Set Spinner Selection dari SharedPreferences
         String emotion = sharedPref.getString("emotion", "");
         for (int i = 0; i < spinnerEmotion.getCount(); i++) {
             if (spinnerEmotion.getItemAtPosition(i).toString().equals(emotion)) {
