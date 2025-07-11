@@ -7,7 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import edu.uph.m2si1.talkiebuddy.adapter.ProgressNoteAdapter;
@@ -89,7 +93,6 @@ public class ProfilFragment extends Fragment {
             startActivity(intent);
         });
 
-
         rvProgress.setLayoutManager(new LinearLayoutManager(requireContext()));
         loadNotes();
 
@@ -106,6 +109,14 @@ public class ProfilFragment extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.END);
             }
         });
+
+        updateProfileInfo(); // <- Tambahan agar load saat pertama kali
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateProfileInfo(); // <- Tambahan agar auto update setelah kembali dari activity
     }
 
     private void loadNotes() {
@@ -122,6 +133,26 @@ public class ProfilFragment extends Fragment {
         });
 
         rvProgress.setAdapter(adapter);
+    }
+
+    private void updateProfileInfo() {
+        SharedPreferences preferences = requireContext().getSharedPreferences("UserProfile", Context.MODE_PRIVATE);
+        String name = preferences.getString("name", "John");
+
+        int birthYear = preferences.getInt("birth_year", 2000);
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int age = currentYear - birthYear;
+
+        TextView nameTextView = getView().findViewById(R.id.txvProfilName);
+        TextView ageTextView = getView().findViewById(R.id.textView7);
+
+        if (nameTextView != null) {
+            nameTextView.setText(name);
+        }
+
+        if (ageTextView != null) {
+            ageTextView.setText(age + " y/o");
+        }
     }
 
     @Override
