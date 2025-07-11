@@ -139,7 +139,7 @@
 
                         <TextView
                             android:id="@+id/textView21"
-                            android:layout_width="88dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:layout_marginLeft="65dp"
@@ -167,7 +167,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="23dp"
                             android:text="Wednesday (Avg. 30mins)"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -180,19 +179,19 @@
 
                         <TextView
                             android:id="@+id/textView12"
-                            android:layout_width="wrap_content"
+                            android:layout_width="149dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
                             android:text="Top Vocabulary Categories"
                             android:textSize="16dp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="10dp" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView13"
-                            android:layout_width="109dp"
+                            android:layout_width="108dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginLeft="30dp"
                             android:text="Emotion, Family, Objects, Animals"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -217,7 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="3dp"
                             android:text="18+ words than last week"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
@@ -242,7 +241,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="45dp"
+                            android:layout_marginLeft="49dp"
                             android:text="86% Completed"
                             android:textColor="#40ad4b" />
                     </LinearLayout>
