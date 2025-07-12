@@ -9,48 +9,107 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
         <EditText
             android:id="@+id/edtDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date (e.g. 7 July 2025)" />
+            android:hint="e.g. 7 July 2025"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Topic"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/edtTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Topic" />
+            android:hint="e.g. Animal"
+            android:layout_marginBottom="5dp"/>
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Words Learned"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/edtWords"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Words Learned" />
+            android:hint="e.g. Fish, Deer, Dog"
+            android:layout_marginBottom="5dp"/>
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Summary"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/edtSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Summary" />
+            android:hint="Some words are..."
+            android:layout_marginBottom="5dp"/>
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confidence"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/edtConfidence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confidence (1-5)"
-            android:inputType="number" />
+            android:hint="Scale from 1-5"
+            android:inputType="number"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Duration"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/edtDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Duration (e.g. 15 mins)" />
+            android:hint="e.g. 15 mins"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/edtNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Notes" />
+            android:hint="Focus more on..." />
 
         <Button
             android:id="@+id/btnSave"
