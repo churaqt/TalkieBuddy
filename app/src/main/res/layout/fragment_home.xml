@@ -45,6 +45,7 @@
 
             <!-- Chart Placeholder -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/llyChart"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginBottom="16dp"
