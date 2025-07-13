@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    LinearLayout llyBear;
+    LinearLayout llyChart;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,8 +54,8 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        View llyBear = view.findViewById(R.id.llyBear);
-        llyBear.setOnClickListener(new View.OnClickListener() {
+        View llyChart = view.findViewById(R.id.llyChart);
+        llyChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DashboardActivity.class);

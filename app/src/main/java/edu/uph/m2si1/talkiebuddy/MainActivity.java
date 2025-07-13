@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Fragment default saat pertama dibuka
-        //replaceFragment(new HomeFragment());
+        binding.bottomNavigationView.setSelectedItemId(R.id.navHome);
+        replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -43,4 +43,3 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 }
-
