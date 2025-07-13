@@ -30,7 +30,7 @@
     <color name="switch_thumb_unchecked">#FFFFFF</color>
 
     <!-- Logout button colors -->
-    <color name="logout_text_color">#F00101</color>
+    <color name="logout_text_color">#FFFFFF</color>
     <color name="logout_button_background">#FFFFFF</color>
     <color name="logout_button_border">#FFFFFF</color>
 </resources>
