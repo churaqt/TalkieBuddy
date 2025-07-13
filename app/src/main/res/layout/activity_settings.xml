@@ -112,14 +112,16 @@
         </LinearLayout>
 
         <!-- Logout Button -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FF4444"
+            android:text="LOG OUT"
+            android:textAllCaps="false"
+            android:background="@drawable/logout_button_background"
+            android:textColor="#FF0000"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"/>
+
     </LinearLayout>
 </ScrollView>
