@@ -32,7 +32,7 @@ import io.realm.RealmResults;
 public class ProfilFragment extends Fragment {
 
     private RecyclerView rvProgress;
-    private Button btnAddProgress;
+    private Button btnAddProgress, logout_button;
     private ProgressNoteAdapter adapter;
     private List<ProgressNote> noteList = new ArrayList<>();
     private Realm realm;
@@ -85,6 +85,8 @@ public class ProfilFragment extends Fragment {
         btnAddProgress = view.findViewById(R.id.btnAddProgress);
         drawerLayout = view.findViewById(R.id.drawer_layout);
         imgSetting = view.findViewById(R.id.imgSetting);
+        logout_button = view.findViewById(R.id.logout_button);
+
 
         // NEW: find profile_setting
         LinearLayout profileSetting = view.findViewById(R.id.profile_setting);
@@ -109,6 +111,13 @@ public class ProfilFragment extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.END);
             }
         });
+
+        logout_button.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), LoginActivity.class);
+            startActivity(intent);
+            requireActivity().finish(); // <-- ini supaya tutup activity sekarang biar ga bisa balik pakai back
+        });
+
 
         updateProfileInfo(); // <- Tambahan agar load saat pertama kali
     }
