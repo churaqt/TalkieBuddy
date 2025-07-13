@@ -490,7 +490,6 @@
                     android:id="@+id/logout_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/logout_button_background"
                     android:text="Log Out"
                     android:textColor="@color/logout_text_color"
                     android:textSize="16sp"
