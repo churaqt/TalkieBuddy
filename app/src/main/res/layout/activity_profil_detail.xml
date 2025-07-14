@@ -33,7 +33,6 @@
             android:src="@drawable/fotoprofil"
             android:scaleType="centerCrop" />
 
-        <!-- Changed from TextView to EditText for editable name -->
         <EditText
             android:id="@+id/profile_name"
             android:layout_width="wrap_content"
@@ -52,7 +51,6 @@
 
     </LinearLayout>
 
-    <!-- Gender Section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
