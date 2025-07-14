@@ -60,11 +60,9 @@ public class ProfilDetailActivity extends AppCompatActivity {
             }
         });
 
-        // Use RadioGroup's built-in listener instead of individual click listeners
         genderGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Force refresh the drawable state to ensure proper visual feedback
                 maleRadio.refreshDrawableState();
                 femaleRadio.refreshDrawableState();
             }
@@ -72,14 +70,12 @@ public class ProfilDetailActivity extends AppCompatActivity {
     }
 
     private void loadProfileData() {
-        // Load existing profile data from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
         String name = prefs.getString("name", "John");
         String gender = prefs.getString("gender", "Male");
 
         profileName.setText(name);
 
-        // Use RadioGroup's check method for proper state management
         if (gender.equals("Male")) {
             genderGroup.check(R.id.male_radio);
         } else {
@@ -93,16 +89,13 @@ public class ProfilDetailActivity extends AppCompatActivity {
         birthdayPicker.updateDate(year, month, day);
     }
     private void saveProfileData() {
-        // Get the name from EditText
         String name = profileName.getText().toString().trim();
 
-        // Validate name input
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, "Please enter your name!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Get selected gender using RadioGroup
         String selectedGender = "Male"; // default
         int selectedId = genderGroup.getCheckedRadioButtonId();
         if (selectedId == R.id.male_radio) {
@@ -111,12 +104,10 @@ public class ProfilDetailActivity extends AppCompatActivity {
             selectedGender = "Female";
         }
 
-        // Get birthday
         int year = birthdayPicker.getYear();
         int month = birthdayPicker.getMonth();
         int day = birthdayPicker.getDayOfMonth();
 
-        // Save to SharedPreferences
         SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("name", name);
